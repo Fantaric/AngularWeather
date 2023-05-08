@@ -1,0 +1,12 @@
+version: "2.2"
+services:
+  backend-container:
+#    image: php:7.2-apache
+    build:
+      context: ./
+      dockerfile: Dockerfile-apache
+    volumes:
+      - ./prog-php:/var/www/html
+    ports:
+      - 8080:80
+
