@@ -2,11 +2,17 @@ version: "2.2"
 services:
   backend-container:
 #    image: php:7.2-apache
-    build:
-      context: ./
-      dockerfile: Dockerfile-apache
+    build: .
     volumes:
-      - ./prog-php:/var/www/html
+      - ./mio-progetto-php:/var/www/html
     ports:
       - 8080:80
-
+  db-container:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=segretissima
+    volumes:
+      - ./db.sql:/docker-entrypoint-initdb.d/db.sql
+      - ./dati-mysql:/var/lib/mysql
+    ports:
+      - 3306:3306
