@@ -4,9 +4,10 @@ CREATE DATABASE Cache_Weather;
 USE Cache_Weather;
 
 
-CREATE TABLE prova(
+CREATE TABLE cities(
 
-id_prova int primary key,
-nome varchar(255)
-
+id int primary key auto_increment,
+name varchar(255),
+longitude varchar(255),
+latitude varchar(255)
 );

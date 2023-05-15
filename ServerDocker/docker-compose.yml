@@ -7,7 +7,7 @@ services:
       - ./mio-progetto-php:/var/www/html
     ports:
       - 8080:80
-  db-container:
+  db:
     image: mysql:5.7
     environment:
       - MYSQL_ROOT_PASSWORD=segretissima
