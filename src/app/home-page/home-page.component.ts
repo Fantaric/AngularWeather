@@ -16,6 +16,6 @@ export class HomePageComponent {
 
   callApi()
   {
-    this.dataRest.getDataRows("localhost:8080/", this.search)
+    this.dataRest.getDataRows("", this.search)
   }
 }

@@ -9,8 +9,9 @@ export class DataweatherService {
 
   constructor(private http: HttpClient) { }
 
-
   getDataRows(url : string, city: string): Observable<any>{
-    return this.http.get<any>(url+"?city="+city);
+    return this.http.get<any>(url+"/api/?city="+city);
   }
+
+ 
 }
