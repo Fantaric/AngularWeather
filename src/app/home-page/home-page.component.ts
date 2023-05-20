@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { DataweatherService } from '../services/dataweather.service';
+import { RootObject } from 'src/types';
+import { MatTable, MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-home-page',
@@ -8,14 +10,32 @@ import { DataweatherService } from '../services/dataweather.service';
 })
 export class HomePageComponent {
 
+  dataSource :MatTableDataSource<RootObject> = new MatTableDataSource<RootObject>();
+  data : RootObject | undefined;
 
   constructor(private dataRest: DataweatherService){ 
+    
   }
 
   search : string ="";
+ 
+  
+  displayedColumns: string[] = ['day', 'prob', 'testo', 'min', 'max'];
+
 
   callApi()
   {
-    this.dataRest.getDataRows("", this.search)
+    this.dataRest.getDataRows("", this.search).subscribe(
+      data => {
+        this.data = data;
+      }
+    )
   }
+
+  stampa(){
+  console.log(this.data)
+  }
+   
 }
+
+

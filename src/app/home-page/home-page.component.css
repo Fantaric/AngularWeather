@@ -1,7 +1,24 @@
-.homePage{
+
+
+.title{
+    font-size: 50px;
     text-align: center;
+}
+
+.title1{
+    font-size: 30px;
+    text-align: center;
+}
+
+.homeDiv{
     width: 75%;
+    background-color: lightblue;
+    padding: 2rem;
+    text-align: center;
     margin-left: auto;
     margin-right: auto;
-    padding: 2rem;
+    opacity: 0.9;
+    border-radius: 2%;
+
 }
+

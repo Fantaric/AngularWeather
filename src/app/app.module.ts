@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule, HttpHandler } from '@angular/common/http';
 import { DataweatherService } from './services/dataweather.service';
+import { MatTableModule } from '@angular/material/table'  
+
 
 
 @NgModule({
@@ -21,6 +23,7 @@ import { DataweatherService } from './services/dataweather.service';
   ],
   imports: [
     BrowserModule,
+    MatTableModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,

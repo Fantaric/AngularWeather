@@ -1,4 +1,12 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body{font-family: 'Raleway', sans-serif;}
+
+.bi{
+    background-image: url(./app/home-page/images/spazio-alba-italia-europa.webp);
+height: 100%; 
+background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
