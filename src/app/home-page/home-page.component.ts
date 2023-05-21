@@ -24,6 +24,7 @@ export class HomePageComponent {
 
   search : string ="";
   dis : boolean | undefined
+  dis1 : boolean | undefined
  
   
   displayedColumns: string[] = ['day', 'prob', 'testo', 'min', 'max'];
@@ -43,6 +44,13 @@ export class HomePageComponent {
 
   disable(){
    this.dis = true;
+   this.dis1 = false;
+  }
+
+  enable(){
+    this.dis = false;
+    this.dis1 = true;
+    this.clickedRows = new Set<Forecastday>();
   }
    
 }
