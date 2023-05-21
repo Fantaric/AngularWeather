@@ -1,9 +1,39 @@
 <?php 
 header("Access-Control-Allow-Method: *");
 header("Access-Control-Allow-Origin: *");
-//echo $_GET["city"];
-$response = get_web_page("http://api.weatherapi.com/v1/forecast.json?key=849b7f2465c946abb46155513232005&q=" .$_GET['city']. "&aqi=no&days=7");
-echo $response;
+
+$host = "db";
+$user = "root";
+$pass = "segretissima";
+$db = "Cache_Weather";
+
+$conn = new mysqli($host, $user, $pass, $db)or die("Connection failed: " . $conn->connect_error);
+
+str_replace(" ","%20", $_GET['city']);
+
+$sql = "select * from weather where city='".$_GET['city']."'";
+$mysqlResponse=$conn->query($sql);
+if ($mysqlResponse->num_rows > 0){
+    $row = $mysqlResponse->fetch_assoc();
+    if($row['date']=date('y-m-d')){ //is fresh
+        echo $row['apiResponse'];
+    }else{//isn't fresh
+        $apiJson = get_web_page("http://api.weatherapi.com/v1/forecast.json?key=849b7f2465c946abb46155513232005&q=" .$_GET['city']. "&aqi=no&days=7");
+        $sql = "UPDATE weather
+        SET date ='".date('y-m-d')."' and apiResponse='".$apiJson."'
+        WHERE id=".$row["id"];
+        $conn->query($sql);
+        echo $apiJson;
+    }
+
+}else{//
+    $apiJson = get_web_page("http://api.weatherapi.com/v1/forecast.json?key=849b7f2465c946abb46155513232005&q=" .$_GET['city']. "&aqi=no&days=7");
+    $sql="insert into weather values(default,'".$_GET['city']."','".date('y-m-d')."','".$apiJson."')";
+    $conn->query($sql);
+    echo $apiJson;
+}
+
+
 // $resArr = json_decode($response,true);
 
 /*foreach ($resArr as $data)
@@ -41,23 +71,5 @@ function get_web_page($url) {
 
     return $content;
 }
-
-
-  $host = "db";
-  $user = "root";
-  $pass = "segretissima";
-  $db = "Cache_Weather";
-
-
-      //echo "cianeeee";
-
-      $conn = mysqli_connect($host, $user, $pass, $db);
-
-// Check connection
-if (!$conn) {
-  die("Connection failed: " . mysqli_connect_error());
-}
-//echo "Connected successfully";
-
 
 ?>

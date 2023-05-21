@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RootObject } from 'src/types';
 
+ 
 @Injectable({
   providedIn: 'root'
 })
@@ -12,6 +13,7 @@ export class DataweatherService {
 
   getDataRows(url : string, city: string): Observable<RootObject>{
     return this.http.get<RootObject>(url+"/api/?city="+city);
+
   }
 
  

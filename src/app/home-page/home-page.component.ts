@@ -10,6 +10,7 @@ import { Forecast } from 'src/types';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
+
 export class HomePageComponent {
 
   
@@ -25,10 +26,11 @@ export class HomePageComponent {
   search : string ="";
   dis : boolean | undefined
   dis1 : boolean | undefined
- 
+
+
   
   displayedColumns: string[] = ['day', 'prob', 'testo', 'min', 'max'];
-  displayedColumns1 : string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns1 : string[] = ['day', 'icon','testo','temp', 'wind', 'min', 'max'];
 
 
   callApi()
@@ -52,6 +54,7 @@ export class HomePageComponent {
     this.dis1 = true;
     this.clickedRows = new Set<Forecastday>();
   }
+ 
    
 }
 

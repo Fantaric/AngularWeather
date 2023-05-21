@@ -4,10 +4,9 @@ CREATE DATABASE Cache_Weather;
 USE Cache_Weather;
 
 
-CREATE TABLE cities(
-
+CREATE TABLE weather(
 id int primary key auto_increment,
-name varchar(255),
-longitude varchar(255),
-latitude varchar(255)
+city varchar(255),
+date date,
+apiResponse json
 );
