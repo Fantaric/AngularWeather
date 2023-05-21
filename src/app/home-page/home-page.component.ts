@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { DataweatherService } from '../services/dataweather.service';
 import { RootObject } from 'src/types';
 import { MatTable, MatTableDataSource} from '@angular/material/table';
+import { Forecastday } from 'src/types';
+import { Forecast } from 'src/types';
 
 @Component({
   selector: 'app-home-page',
@@ -10,7 +12,10 @@ import { MatTable, MatTableDataSource} from '@angular/material/table';
 })
 export class HomePageComponent {
 
+  
   dataSource :MatTableDataSource<RootObject> = new MatTableDataSource<RootObject>();
+  dataSource1: MatTableDataSource<RootObject> = new MatTableDataSource<RootObject>();
+  
   data : RootObject | undefined;
 
   constructor(private dataRest: DataweatherService){ 
@@ -18,9 +23,11 @@ export class HomePageComponent {
   }
 
   search : string ="";
+  dis : boolean | undefined
  
   
   displayedColumns: string[] = ['day', 'prob', 'testo', 'min', 'max'];
+  displayedColumns1 : string[] = ['position', 'name', 'weight', 'symbol'];
 
 
   callApi()
@@ -32,8 +39,10 @@ export class HomePageComponent {
     )
   }
 
-  stampa(){
-  console.log(this.data)
+  clickedRows = new Set<Forecastday>();
+
+  disable(){
+   this.dis = true;
   }
    
 }
