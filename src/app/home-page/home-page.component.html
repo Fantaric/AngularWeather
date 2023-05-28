@@ -12,8 +12,8 @@
 </form>
 
 
-<h1 class="title1">{{data?.location?.name}}, {{data?.location?.region}} </h1>
-<table mat-table [hidden]="dis" [dataSource]="data.forecast.forecastday" class="mat-elevation-z8" *ngIf="data">
+<h1 class="title1">{{data?.location?.name}} {{data?.location?.region}} {{data?.error?.message}}</h1>
+<table mat-table [hidden]="dis" [dataSource]="data.forecast.forecastday" class="mat-elevation-z8" *ngIf="data && !data.error"  >
     
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
@@ -99,6 +99,8 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
       </table>
+      <br>
+      <mat-icon class="align" (click)="enable()">keyboard_backspace</mat-icon>
     </ng-container>
 
 </div>

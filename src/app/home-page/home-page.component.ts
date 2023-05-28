@@ -26,6 +26,8 @@ export class HomePageComponent {
   search : string ="";
   dis : boolean | undefined
   dis1 : boolean | undefined
+  error: any;
+  
 
 
   
@@ -38,7 +40,8 @@ export class HomePageComponent {
     this.dataRest.getDataRows("", this.search).subscribe(
       data => {
         this.data = data;
-      }
+      },
+      error => this.error = error
     )
   }
 
@@ -55,7 +58,7 @@ export class HomePageComponent {
     this.clickedRows = new Set<Forecastday>();
   }
  
-   
+  
 }
 
 

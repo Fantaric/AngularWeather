@@ -13,7 +13,6 @@ export class DataweatherService {
 
   getDataRows(url : string, city: string): Observable<RootObject>{
     return this.http.get<RootObject>(url+"/api/?city="+city);
-
   }
 
  

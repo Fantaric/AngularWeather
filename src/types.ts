@@ -78,3 +78,12 @@ export interface Location {
   localtime_epoch: number;
   localtime: string;
 }
+
+export interface RootObject{
+  error: Error;
+}
+
+export interface Error {
+  code: number;
+  message: string;
+}
